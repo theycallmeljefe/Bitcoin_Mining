@@ -1,5 +1,8 @@
 Bitcoin Mining Resources
 ------------------------
+#### Motivation
+Miners provide security to the Bitcoin network at the expense of their time and financial commitment to "mine" blocks. The aim of this repository is to provide a living resource for people to better understand the mining protocol in Bitcoin.
+
 
 #### Topics to Explore:
 * History of mining (esp. Ghash.io controversy)
