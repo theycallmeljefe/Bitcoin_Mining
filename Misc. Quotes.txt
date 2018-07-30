@@ -1,0 +1,27 @@
+
+- Mike Hearn quotes/ claims: “the term SPV client did not exist, it seems like I used it for the first time in that thread.” (https://bitcointalk.org/?topic=7972.0)
+- headers only client serves as the motivation for establishing a _major step towards making bitcoin a realistic payment platform_, enabling the network to scale further by separating nodes into super-nodes and lightweight-leaf clients.” - BTF,org user xf2_org
+
+- SPV defined as: either connecting to a trusted node, or puts faith in high difficulty as a proxy for proof of validity. BitCoinJ is an implementation of this mode.
+	- connect to arbitrary node -> dl block header -> check for hMR and for matching difficulty.
+- Bloom filters (BIP 0037, Matt Corallo + Mike Hearn) serve to enhance SPV clients
+	- purpose: reduce sent tx data using bloom filter (probalistic data structure to determine if a member is in a set) to help SPV clients contend with increasing blocksizes and bandwidth usage demands
+		- achieve this by downloading all block headers, verifying the proofs of work, and following the longest proof-of-work chain.
+	- issues (https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-May/012636.html):
+		- bitcoinJ (supports full and simplified verification) puts both pubkey and pubkey hash into bloom filter -> reduces false positive rate
+		- reprocessing DoS attacks
+		- merkle paths are not time verifiable
+		- network nodes can return null filter results - wallet has no way of discerning if it has been lied to 
+	- proposed solution: 
+		- 2016: bloom filter digests - contains inputs and outputs of txs in each block. 
+		- 2018 (prop BIP 157 05242017): [compact] client side block filtering - full nodes generate deterministic filters on block data that are served to the client. 
+
+- Block Header is block data in big-endian hexadecimal format, with additional bytes for SHA-256
+
+
+
+- "The fact that new coins are produced means the money supply increases by a planned amount, but this does not necessarily result in inflation.  If the supply of money increases at the same rate that the number of people using it increases, prices remain stable.  If it does not increase as fast as demand, there will be deflation and early holders of money will see its value increase.
+
+Coins have to get initially distributed somehow, and a constant rate seems like the best formula." (https://satoshi.nakamotoinstitute.org/emails/cryptography/5/)
+					-- Satoshi Nakamoto
+
