@@ -13,4 +13,4 @@ Miners provide security to the Bitcoin network at the expense of their time and 
 * BetterHash Protocol
 * FIBRE Network
 * Block Propogation and Mining
-
+* BITMAIN IPO
